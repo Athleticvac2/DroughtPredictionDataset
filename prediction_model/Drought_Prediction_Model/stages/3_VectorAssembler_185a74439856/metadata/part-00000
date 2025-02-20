@@ -1,0 +1,1 @@
+{"class":"org.apache.spark.ml.feature.VectorAssembler","timestamp":1739989634938,"sparkVersion":"3.5.4","uid":"VectorAssembler_185a74439856","paramMap":{"inputCols":["Rainfall_mm","Soil_Moisture_Percent","Temperature_Celsius","Crop_Indexer","Region_Indexer"],"outputCol":"features"},"defaultParamMap":{"handleInvalid":"error","outputCol":"VectorAssembler_185a74439856__output"}}

@@ -1,0 +1,5 @@
+streamlit~=1.41.1
+protobuf~=4.25.3
+pandas~=2.2.3
+pyspark~=3.5.3
+numpy~=1.26.4
