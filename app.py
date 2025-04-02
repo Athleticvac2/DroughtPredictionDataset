@@ -103,7 +103,6 @@ def recommendations_page():
             st.write("No data available for the selected region.")
             return
 
-        # Convert PySpark DataFrame to Pandas DataFrame
         monthly_suitability_pd = monthly_suitability.toPandas()
 
         fig, ax = plt.subplots(figsize=(12, 6))
@@ -118,7 +117,6 @@ def recommendations_page():
             st.write("No data available for the selected crop.")
             return
 
-        # Convert PySpark DataFrame to Pandas DataFrame
         crop_suitability_pd = crop_suitability.toPandas()
 
         fig, ax = plt.subplots(figsize=(12, 6))
@@ -133,7 +131,6 @@ def recommendations_page():
             st.write("No data available for the selected region.")
             return
 
-        # Convert PySpark DataFrame to Pandas DataFrame
         region_suitability_pd = region_suitability.toPandas()
 
         fig, ax = plt.subplots(figsize=(12, 6))
@@ -147,7 +144,6 @@ def recommendations_page():
         monthly_suitability = get_planting_suitability(region)
         create_monthly_planting_chart(monthly_suitability)
 
-        # Assess which crops are suitable for planting
         suitable_crops = monthly_suitability.groupBy('Crop').agg(
             F.mean('Average_Drought_Status').alias('Avg_Drought_Status')).collect()
 
@@ -164,7 +160,6 @@ def recommendations_page():
             st.write("No data available for the selected region.")
             return
 
-        # Assess which crops are suitable for planting
         suitable_crops = monthly_suitability.groupBy('Crop').agg(
             F.mean('Average_Drought_Status').alias('Avg_Drought_Status')).collect()
 
@@ -178,7 +173,6 @@ def recommendations_page():
             avg_drought_status = row['Avg_Drought_Status']
             if avg_drought_status == 0:
                 st.write(f"✅ You may plant **{crop_name}** as there will be no drought.")
-                # Find the months with drought status of zero for this crop
                 zero_months = monthly_suitability.filter(
                     (monthly_suitability['Crop'] == crop_name) &
                     (monthly_suitability['Average_Drought_Status'] == 0)
